@@ -1,0 +1,23 @@
+{
+  "name": "projet-specialise-2022-antolefou",
+  "version": "1.0.0",
+  "description": "fait par : Antoine-JEAN",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cegepmatane/projet-specialise-2022-antolefou.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cegepmatane/projet-specialise-2022-antolefou/issues"
+  },
+  "homepage": "https://github.com/cegepmatane/projet-specialise-2022-antolefou#readme",
+  "dependencies": {
+    "gun": "^0.2020.1235"
+  }
+}
