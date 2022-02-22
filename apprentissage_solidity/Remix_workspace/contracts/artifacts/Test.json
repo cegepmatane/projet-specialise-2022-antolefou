@@ -1,0 +1,101 @@
+{
+	"deploy": {
+		"VM:-": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"main:1": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"ropsten:3": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"rinkeby:4": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"kovan:42": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"görli:5": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"Custom": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		}
+	},
+	"data": {
+		"bytecode": {
+			"linkReferences": {},
+			"object": "6080604052348015600f57600080fd5b5060d38061001e6000396000f3fe608060405260043610601c5760003560e01c8063b214faa5146021575b600080fd5b604a60048036036020811015603557600080fd5b8101908080359060200190929190505050604c565b005b803373ffffffffffffffffffffffffffffffffffffffff167f19dacbf83c5de6658e14cbf7bcae5c15eca2eedecf1c66fbca928e4d351bea0f346040518082815260200191505060405180910390a35056fea265627a7a72315820d4271c3d1677ae7e2ec7b28a3818019d05bb94cee96a96bfa47e8ba4d43c5bb364736f6c63430005110032",
+			"opcodes": "PUSH1 0x80 PUSH1 0x40 MSTORE CALLVALUE DUP1 ISZERO PUSH1 0xF JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP PUSH1 0xD3 DUP1 PUSH2 0x1E PUSH1 0x0 CODECOPY PUSH1 0x0 RETURN INVALID PUSH1 0x80 PUSH1 0x40 MSTORE PUSH1 0x4 CALLDATASIZE LT PUSH1 0x1C JUMPI PUSH1 0x0 CALLDATALOAD PUSH1 0xE0 SHR DUP1 PUSH4 0xB214FAA5 EQ PUSH1 0x21 JUMPI JUMPDEST PUSH1 0x0 DUP1 REVERT JUMPDEST PUSH1 0x4A PUSH1 0x4 DUP1 CALLDATASIZE SUB PUSH1 0x20 DUP2 LT ISZERO PUSH1 0x35 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST DUP2 ADD SWAP1 DUP1 DUP1 CALLDATALOAD SWAP1 PUSH1 0x20 ADD SWAP1 SWAP3 SWAP2 SWAP1 POP POP POP PUSH1 0x4C JUMP JUMPDEST STOP JUMPDEST DUP1 CALLER PUSH20 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF AND PUSH32 0x19DACBF83C5DE6658E14CBF7BCAE5C15ECA2EEDECF1C66FBCA928E4D351BEA0F CALLVALUE PUSH1 0x40 MLOAD DUP1 DUP3 DUP2 MSTORE PUSH1 0x20 ADD SWAP2 POP POP PUSH1 0x40 MLOAD DUP1 SWAP2 SUB SWAP1 LOG3 POP JUMP INVALID LOG2 PUSH6 0x627A7A723158 KECCAK256 0xD4 0x27 SHR RETURNDATASIZE AND PUSH24 0xAE7E2EC7B28A3818019D05BB94CEE96A96BFA47E8BA4D43C JUMPDEST 0xB3 PUSH5 0x736F6C6343 STOP SDIV GT STOP ORIGIN ",
+			"sourceMap": "25:201:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;25:201:0;;;;;;;"
+		},
+		"deployedBytecode": {
+			"linkReferences": {},
+			"object": "608060405260043610601c5760003560e01c8063b214faa5146021575b600080fd5b604a60048036036020811015603557600080fd5b8101908080359060200190929190505050604c565b005b803373ffffffffffffffffffffffffffffffffffffffff167f19dacbf83c5de6658e14cbf7bcae5c15eca2eedecf1c66fbca928e4d351bea0f346040518082815260200191505060405180910390a35056fea265627a7a72315820d4271c3d1677ae7e2ec7b28a3818019d05bb94cee96a96bfa47e8ba4d43c5bb364736f6c63430005110032",
+			"opcodes": "PUSH1 0x80 PUSH1 0x40 MSTORE PUSH1 0x4 CALLDATASIZE LT PUSH1 0x1C JUMPI PUSH1 0x0 CALLDATALOAD PUSH1 0xE0 SHR DUP1 PUSH4 0xB214FAA5 EQ PUSH1 0x21 JUMPI JUMPDEST PUSH1 0x0 DUP1 REVERT JUMPDEST PUSH1 0x4A PUSH1 0x4 DUP1 CALLDATASIZE SUB PUSH1 0x20 DUP2 LT ISZERO PUSH1 0x35 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST DUP2 ADD SWAP1 DUP1 DUP1 CALLDATALOAD SWAP1 PUSH1 0x20 ADD SWAP1 SWAP3 SWAP2 SWAP1 POP POP POP PUSH1 0x4C JUMP JUMPDEST STOP JUMPDEST DUP1 CALLER PUSH20 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF AND PUSH32 0x19DACBF83C5DE6658E14CBF7BCAE5C15ECA2EEDECF1C66FBCA928E4D351BEA0F CALLVALUE PUSH1 0x40 MLOAD DUP1 DUP3 DUP2 MSTORE PUSH1 0x20 ADD SWAP2 POP POP PUSH1 0x40 MLOAD DUP1 SWAP2 SUB SWAP1 LOG3 POP JUMP INVALID LOG2 PUSH6 0x627A7A723158 KECCAK256 0xD4 0x27 SHR RETURNDATASIZE AND PUSH24 0xAE7E2EC7B28A3818019D05BB94CEE96A96BFA47E8BA4D43C JUMPDEST 0xB3 PUSH5 0x736F6C6343 STOP SDIV GT STOP ORIGIN ",
+			"sourceMap": "25:201:0:-;;;;;;;;;;;;;;;;;;;;;119:105;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;119:105:0;;;;;;;;;;;;;;;;;:::i;:::-;;;203:3;191:10;183:35;;;208:9;183:35;;;;;;;;;;;;;;;;;;119:105;:::o"
+		},
+		"gasEstimates": {
+			"creation": {
+				"codeDepositCost": "42200",
+				"executionCost": "93",
+				"totalCost": "42293"
+			},
+			"external": {
+				"deposit(bytes32)": "2009"
+			}
+		},
+		"methodIdentifiers": {
+			"deposit(bytes32)": "b214faa5"
+		}
+	},
+	"abi": [
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": true,
+					"internalType": "address",
+					"name": "_from",
+					"type": "address"
+				},
+				{
+					"indexed": true,
+					"internalType": "bytes32",
+					"name": "_id",
+					"type": "bytes32"
+				},
+				{
+					"indexed": false,
+					"internalType": "uint256",
+					"name": "_value",
+					"type": "uint256"
+				}
+			],
+			"name": "Deposit",
+			"type": "event"
+		},
+		{
+			"constant": false,
+			"inputs": [
+				{
+					"internalType": "bytes32",
+					"name": "_id",
+					"type": "bytes32"
+				}
+			],
+			"name": "deposit",
+			"outputs": [],
+			"payable": true,
+			"stateMutability": "payable",
+			"type": "function"
+		}
+	]
+}
