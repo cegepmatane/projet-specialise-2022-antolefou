@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<iframe src="https://www.youtube.com/embed/ZiELAFqNSLQ" frameborder="0" allowfullscreen style="border: 0px; position: absolute; width: 100%; height: 100%;"></iframe>
+
+  <form id="createUser">
+    <label for="fname">Nom d'utilisateur :</label><br>
+    <input type="text" id="fname" name="fname"><br>
+
+    <label for="Mdp">Mots de passe :</label><br>
+    <input type="text" id="Mdp" name="mdp">
+
+    <input id="submitUser" type="submit" value="Creer un nouvel utilisateur">
+  </form>
+
+</body>
+</html>
+
+<!-- Load GUN itself. -->
+<script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gun/sea.js"></script>
+
+<!-- Load jQuery to help make things a bit easier. -->
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<script>
+    var gun = Gun();
+    var user = gun.user();
+
+    // Browser Native Web Crypto API is used to PBKDF2 extend your password.
+    user.create('alice', 'unsafepassword', function(ack){
+        // done creating user!
+    });
+
+    // Browser Native Web Crypto API is used to PBKDF2 extend your password.
+    user.auth('alice', 'unsafepassword', function(ack){
+        // logged in!
+    });
+
+    var alice = {name: "Alice"};
+    alice.boss = {name: "Fluffy", species: "Kitty", peon: alice};
+    user.get('profile').put(alice);
+
+    user.get('profile').get('boss').get('peon').get('name').once(function(data){
+        console.log("The boss's peon's name is:", data); // Alice
+    });
+
+</script>
