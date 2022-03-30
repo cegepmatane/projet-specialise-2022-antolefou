@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>
+        pseudo : <div id="divPeudoUtilisateurAfficher">printed when empty</div> <br>
+        <label>
+            <textarea id="tchat" readonly style="height: 300px; width: 300px; "></textarea>
+        </label>
+    </div>
+
+    <br>
+    <label for="msg"> messsage </label><br>
+    <input type="text" id="msg" name="fname">
+    <input id="buttonEnvoyerMsg" type="button" value=" envoyer " ><br><br><br>
+
+    <form id="createUser">
+        <label for="Username">Nom d'utilisateur :</label><br>
+        <input type="text" id="Username" name="fname"><br>
+
+        <label for="Mdp">Mots de passe :</label><br>
+        <input type="text" id="Mdp" name="mdp">
+
+        <input id="submitUser" type="submit" value="Creer un nouvel utilisateur">
+    </form>
+
+    <input id="buttonUserIs" type="button" value="qui est l'utilisateur ? " >
+    <input id="buttonLoggout" type="button" value=" se déconnecter " >
+    <input id="buttonLoggin" type="button" value=" se connecté " >
+
+</body>
+</html>
+
+<!-- Load GUN itself. -->
+<script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gun/sea.js"></script>
+
+<!-- Load jQuery to help make things a bit easier. -->
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<!-- load my scrip -->
+<script  src="user.mjs"></script>
+
+<script>
+    // import GUN from 'gun';
+    const gun = GUN();
+    const user = gun.user();
+
+    // ------ BDD -----
+    //
+
+
+    //
+    // console.log(gun.get("tchat").put("messages"))
+
+    // console.log(tchat)
+    // console.log(tchat.once(v => v.messages))
+    // console.log(tchat.put.messages)
+    // $("#tchat").val(messages.block)
+
+
+    // $("#buttonEnvoyerMsg").click(async function(e){
+    //     let messageAEnvoyer = $("input#msg").val();
+    //
+    //     if (isLogged()) {
+    //
+    //         var tchat = await gun.get('tchat').once(v => {
+    //             let block = v.messages  + "\n " + user.is.alias + " : " + messageAEnvoyer;
+    //             gun.get("tchat").put({
+    //                 messages: block
+    //             }).once( w => {
+    //                     $('#tchat').val(w.messages);
+    //                 }
+    //
+    //             )
+    //             return v;
+    //         });
+    //         $("input#msg").val("");
+    //     }
+    // })
+
+    // ------------------ Autentification | connection | déconnection | whois ----------------------
+
+
+    updateAffichageUser()
+
+    // fonction qui créé un utilisateur
+    function createUser(username,password) {
+        return user.create(username,password, (ack => {
+            updateAffichageUser();
+            // create user
+        }))
+    }
+
+    // quand un utilisateur s'identifie on affiche dans la console ses infos
+    gun.on( 'auth', ack => console.log('Authentication was successful: ', ack))
+
+
+    // true si l'utilisateur est connecté avec un compte
+    // false si l'utilisateur n'est pas connecté avec un compte
+    function isLogged(){
+        return user.is !== undefined;
+    }
+
+    // créer un utilisateur quand on appui sur "Creer un nouvel utilisateur"
+    $('form').on('submit', async function (e) {
+        e.preventDefault();
+        console.log("createUser")
+        createUser($('input#Username').val(), $('input#Mdp').val());
+        updateAffichageUser();
+
+    })
+
+    // affiche dans la console l'utilisateur ainsi que sa clef public / privée
+    $("#buttonUserIs").click(async function(e){
+         console.log(user.is)
+        updateAffichageUser();
+
+    })
+
+    // authentifie l'utilisateur quand il clique sur le boutton "se déconnecté"
+    $("#buttonLoggout").click(async function(e){
+        console.log("loggout")
+        user.leave()
+        updateAffichageUser();
+
+    })
+
+    // authentifie l'utilisateur quand il clique sur le boutton "se connecté"
+    $("#buttonLoggin").click(async function(e){
+
+         await user.auth($('input#Username').val(), $('input#Mdp').val(), function(ack){
+            // logged in!
+             updateAffichageUser();
+         });
+
+         console.log("logged in ");
+
+    })
+
+
+    // -------------------------- gestion du tchat ------------------
+
+    // $("#buttonEnvoyerMsg").click(async function(e){
+    //     let messageAEnvoyer = $("input#msg").val();
+    //     $("input#msg").val("");
+    //
+    //     if (isLogged()){
+    //         $('#tchat').val($('#tchat').val() + "\n " + user.is.alias + " : " + messageAEnvoyer);
+    //         $("textarea#tchat").val()
+    //     }
+    //
+    // })
+
+    // ------------------------- affichage de l'utilisateur -------------------
+
+
+
+    function updateAffichageUser(){
+        if (isLogged()){
+            $("#divPeudoUtilisateurAfficher").text(user.is.alias)
+        } else {
+            $("#divPeudoUtilisateurAfficher").text("not logged")
+        }
+    }
+
+
+    // var gun = Gun();
+    // var user = gun.user();
+
+    // // Browser Native Web Crypto API is used to PBKDF2 extend your password.
+    // user.create('alice', 'unsafepassword', function(ack){
+    //     // done creating user!
+    //
+    // });
+    //
+    // // Browser Native Web Crypto API is used to PBKDF2 extend your password.
+    // user.auth('alice', 'unsafepassword', function(ack){
+    //     // logged in!
+    // });
+    //
+    // var alice = {name: "Alice"};
+    // alice.boss = {name: "Fluffy", species: "Kitty", peon: alice};
+    // user.get('profile').put(alice);
+    //
+    // user.get('profile').get('boss').get('peon').get('name').once(function(data){
+    //     console.log("The boss's peon's name is:", data); // Alice
+    // });
+
+</script>
