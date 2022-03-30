@@ -42,7 +42,7 @@
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
 <!-- load my scrip -->
-<script  src="user.mjs"></script>
+<script  src="tchat.js"></script>
 
 <script>
     // import GUN from 'gun';
@@ -89,7 +89,7 @@
 
     // fonction qui créé un utilisateur
     function createUser(username,password) {
-        return user.create(username,password, (ack => {
+        return user.create(username,password, (() => {
             updateAffichageUser();
             // create user
         }))
@@ -115,14 +115,14 @@
     })
 
     // affiche dans la console l'utilisateur ainsi que sa clef public / privée
-    $("#buttonUserIs").click(async function(e){
+    $("#buttonUserIs").click(async function(){
          console.log(user.is)
         updateAffichageUser();
 
     })
 
     // authentifie l'utilisateur quand il clique sur le boutton "se déconnecté"
-    $("#buttonLoggout").click(async function(e){
+    $("#buttonLoggout").click(async function(){
         console.log("loggout")
         user.leave()
         updateAffichageUser();
@@ -130,7 +130,7 @@
     })
 
     // authentifie l'utilisateur quand il clique sur le boutton "se connecté"
-    $("#buttonLoggin").click(async function(e){
+    $("#buttonLoggin").click(async function(){
 
          await user.auth($('input#Username').val(), $('input#Mdp').val(), function(ack){
             // logged in!
